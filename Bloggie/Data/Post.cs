@@ -1,5 +1,6 @@
 ﻿namespace Bloggie.Data
 {
+    [Index("Slug", IsUnique =true)]
     public class Post
     {
         public int Id { get; set; }
@@ -12,7 +13,7 @@
         public string Title { get; set; }
 
         [Required, MaxLength(200)]
-        public string Slug { get; set; }
+        public string Slug { get; set; } = Guid.NewGuid().ToString();
         public string Content { get; set; }
         public bool IsDraft { get; set; } = false;
         public DateTime CreatedTime { get; set; } = DateTime.Now;
