@@ -27,6 +27,7 @@ namespace Bloggie.Controllers
                 Posts = _db.Posts
                             .Include(x => x.Author)
                             .Where(x => slug == null || x.Category.Slug == slug)
+                            .Where(x => !x.IsDraft)
                             .OrderByDescending(x => x.CreatedTime)
                             .ToList()
             };
@@ -38,6 +39,7 @@ namespace Bloggie.Controllers
         {
             var post = _db.Posts
                 .Include(x => x.Author)
+                .Where(x => !x.IsDraft)
                 .FirstOrDefault(x => x.Slug == slug);
 
             if (post == null) return NotFound();

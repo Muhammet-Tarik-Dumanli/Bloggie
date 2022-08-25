@@ -2,10 +2,14 @@ global using Bloggie.Data;
 global using Microsoft.AspNetCore.Identity;
 global using Microsoft.EntityFrameworkCore;
 global using System.ComponentModel.DataAnnotations;
-global using Microsoft.AspNetCore.Authentication.Google;
 global using System.ComponentModel.DataAnnotations.Schema;
 global using System.Text;
 global using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+global using Microsoft.AspNetCore.Authorization;
+global using Microsoft.AspNetCore.Mvc;
+global using Bloggie.Helpers;
+global using Bloggie.Areas.Admin.Models;
+global using Microsoft.AspNetCore.Authentication.Google;
 
 var builder = WebApplication.CreateBuilder(args);
 //https://docs.microsoft.com/en-us/aspnet/core/security/authentication/social/google-logins?view=aspnetcore-6.0

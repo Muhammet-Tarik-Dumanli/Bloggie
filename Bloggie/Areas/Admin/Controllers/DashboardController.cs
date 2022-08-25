@@ -1,13 +1,23 @@
-﻿using Microsoft.AspNetCore.Mvc;
-
-namespace Bloggie.Areas.Admin.Controllers
+﻿namespace Bloggie.Areas.Admin.Controllers
 {
-    [Area("Admin")]
-    public class DashboardController : Controller
+    public class DashboardController : AdminBaseController  //Kendi oluşturduğumuz AdminBaseController'dan miras aldık, admin ve authorize özelikklerini admin panallerinde tekrar tekrar yazmak zorunda kalmayacağız.
     {
+        private readonly ApplicationDbContext _db;
+
+        public DashboardController(ApplicationDbContext db)
+        {
+            _db = db;
+        }
         public IActionResult Index()
         {
-            return View();
+            var vm = new DashboardViewModel()
+            {
+                CategoryCount = _db.Categories.Count(),
+                PostCount = _db.Posts.Count(),
+                UserCount = _db.Users.Count()
+            };
+
+            return View(vm);
         }
     }
 }
