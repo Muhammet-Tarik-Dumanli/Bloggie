@@ -1,7 +1,7 @@
 ﻿namespace Bloggie.Data
 {
     [Index("Slug", IsUnique = true)]
-    public class Category
+    public class Category : ISlug
     {
         public int Id { get; set; }
 
@@ -12,5 +12,10 @@
         public string Slug { get; set; } = Guid.NewGuid().ToString();
 
         public List<Post> Posts { get; set; }
+
+        public string GetSlugText()
+        {
+            return Name;
+        }
     }
 }

@@ -9,6 +9,7 @@ global using Microsoft.AspNetCore.Authorization;
 global using Microsoft.AspNetCore.Mvc;
 global using Bloggie.Helpers;
 global using Bloggie.Areas.Admin.Models;
+global using Bloggie.Interfaces;
 global using Microsoft.AspNetCore.Authentication.Google;
 
 var builder = WebApplication.CreateBuilder(args);
